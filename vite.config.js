@@ -16,14 +16,22 @@ export default defineConfig(({ command }) => {
         input: glob.sync('./src/*.html'),
         output: {
           manualChunks(id) {
-            if (id.includes('node_modules')) return 'vendor';
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
           },
-          entryFileNames: chunkInfo =>
-            chunkInfo.name === 'commonHelpers' ? 'commonHelpers.js' : '[name].js',
-          assetFileNames: assetInfo =>
-            assetInfo.name && assetInfo.name.endsWith('.html')
-              ? '[name].[ext]'
-              : 'assets/[name]-[hash][extname]',
+          entryFileNames: chunkInfo => {
+            if (chunkInfo.name === 'commonHelpers') {
+              return 'commonHelpers.js';
+            }
+            return '[name].js';
+          },
+          assetFileNames: assetInfo => {
+            if (assetInfo.name && assetInfo.name.endsWith('.html')) {
+              return '[name].[ext]';
+            }
+            return 'assets/[name]-[hash][extname]';
+          },
         },
       },
       outDir: '../dist',
@@ -32,7 +40,9 @@ export default defineConfig(({ command }) => {
     plugins: [
       injectHTML(),
       FullReload(['./src/**/**.html']),
-      SortCss({ sort: 'mobile-first' }),
+      SortCss({
+        sort: 'mobile-first',
+      }),
     ],
   };
 });
