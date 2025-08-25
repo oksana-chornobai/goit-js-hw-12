@@ -1,8 +1,14 @@
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    /* сітка з колонками мінімум 250px */
     gap: 16px;
+    /* відступи між картками */
     padding: 20px;
+}
+
+.form {
+    text-align: center;
 }
 
 .gallery_item {
@@ -33,19 +39,25 @@
 .stats-container {
     display: flex;
     gap: 5px;
+    /* відступ між блоками */
 }
 
 .stat-item {
     display: flex;
     flex-direction: column;
+    /* підпис зверху, число знизу */
     align-items: center;
     width: 80px;
+    /* або інша ширина */
     word-break: break-word;
+    /* дозволяє переносити текст */
     white-space: normal;
+    /* дозволяє перенос рядків */
 }
 
 .stats-container .stat-item span {
     font-size: 0.8rem;
+    /* або 12px, 14px — на твій вибір */
 }
 
 .loader {
@@ -98,5 +110,27 @@
 }
 
 .is-not-active {
+    display: none;
+}
+
+.button {
+    border: none;
+    color: aliceblue;
+    background: #4e75ff;
+    border-radius: 8px;
+    padding: 8px 16px;
+    width: 86px;
+    height: 30px;
+}
+
+.load-more {
+
+    width: 100px;
+    height: 40px;
+    display: block;
+    margin: 0 auto;
+}
+
+.load-more.is-not-active {
     display: none;
 }
