@@ -4,6 +4,8 @@ import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
+import './css/styles.css';
+import './css/gallery.css';
 
 import { getImagesByQuery } from "./js/pixabay-api";
 import { createGallery } from "./js/render-functions";
